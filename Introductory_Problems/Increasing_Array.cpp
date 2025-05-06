@@ -19,19 +19,17 @@ using ii = pair<int, int>;
 // Global Variable Declaration
 
 
-void solve(int testcase){
-    string s; cin >> s;
-    long long curr = 1, ans = 1;
-    char ch = s[0];
-    for (int i = 1; i < s.length(); i++) {
-        if (ch == s[i]) curr++;
-        else {
-            ch = s[i];
-            ans = max(ans, curr);
-            curr = 1;
+void solve (int testcase) {
+    int n; cin >> n;
+    vi a(n); f(a);
+    ll ans = 0;
+    rep(i, 1, n) {
+        if (a[i - 1] > a[i]) {
+            ans += (a[i - 1] - a[i]);
+            a[i] = a[i - 1];
         }
     }
-    cout << max(ans, curr) << "\n";
+    cout << ans << "\n";
 }
 
 int main(void) {
